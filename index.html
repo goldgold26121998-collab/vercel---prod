@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOLD</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18245581347"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18245581347');
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      font-family: 'Rajdhani', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 50px;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      width: 100%;
+      padding: 28px 32px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+      border-bottom: 1px solid #2a2200;
+    }
+
+    .gold-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 32px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #f5c518 0%, #fff7a1 35%, #d4a017 60%, #f5c518 80%, #fffbe0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 3px;
+      filter: drop-shadow(0 0 10px rgba(245, 197, 24, 0.5));
+    }
+
+    /* ── APK BUTTON ── */
+    .apk-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: linear-gradient(135deg, #f5c518 0%, #e6a800 50%, #f5c518 100%);
+      color: #1a0e00;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 24px;
+      cursor: pointer;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(245, 197, 24, 0.4),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .apk-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(245, 197, 24, 0.65),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .apk-btn:active {
+      transform: scale(0.97);
+    }
+
+    .apk-btn i {
+      font-size: 20px;
+    }
+
+    /* ── BANNER SECTION ── */
+    .banner-section {
+      width: 100%;
+      max-width: 720px;
+      margin: 36px auto 0;
+      padding: 0 16px;
+    }
+
+    .banner-label {
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #b8860b;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    /* ── DIGITS GRID ── */
+    .digits-grid {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 7px;
+    }
+
+    .digit-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-family: 'Orbitron', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      border: 1px solid;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .digit-cell::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.2s;
+      background: rgba(255, 247, 161, 0.12);
+    }
+
+    .digit-cell:hover::before { opacity: 1; }
+
+    .digit-cell:hover {
+      transform: scale(1.1);
+      z-index: 2;
+      box-shadow: 0 4px 24px rgba(245, 197, 24, 0.75) !important;
+    }
+
+    .digit-cell.clicked {
+      transform: scale(1.18);
+      box-shadow: 0 6px 36px rgba(255, 215, 0, 0.95) !important;
+    }
+
+    /* Colour variants */
+    .d-gold {
+      background: linear-gradient(145deg, #2a1f00, #1a1200);
+      border-color: #c8950a;
+      color: #f5c518;
+      box-shadow: 0 2px 8px rgba(200, 149, 10, 0.3);
+    }
+
+    .d-bright {
+      background: linear-gradient(145deg, #3a2a00, #231a00);
+      border-color: #f5c518;
+      color: #fff7a1;
+      box-shadow: 0 2px 12px rgba(245, 197, 24, 0.45);
+    }
+
+    .d-dark {
+      background: linear-gradient(145deg, #180f00, #0d0800);
+      border-color: #7a5a05;
+      color: #d4a017;
+      box-shadow: 0 1px 6px rgba(122, 90, 5, 0.3);
+    }
+
+    .d-shine {
+      background: linear-gradient(145deg, #4a3600, #2e2000);
+      border-color: #ffd700;
+      color: #fffbe0;
+      box-shadow: 0 2px 16px rgba(255, 215, 0, 0.55);
+    }
+
+    /* ── SAFE & SECURE BAR ── */
+    .safe-bar {
+      width: 100%;
+      max-width: 720px;
+      margin: 40px auto 0;
+      padding: 20px 32px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0f0a00, #1a1200, #0f0a00);
+      border: 1px solid #c8950a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      box-shadow: 0 0 35px rgba(200, 149, 10, 0.2);
+    }
+
+    .safe-bar i {
+      font-size: 28px;
+      color: #f5c518;
+    }
+
+    .safe-text {
+      font-family: 'Orbitron', monospace;
+      font-size: 15px;
+      font-weight: 700;
+      background: linear-gradient(90deg, #f5c518, #fffbe0, #f5c518);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #c8950a;
+      flex-shrink: 0;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .thanks-page {
+      width: 100%;
+      max-width: 720px;
+      margin: 50px auto 0;
+      padding: 0 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .thanks-card {
+      width: 100%;
+      border-radius: 18px;
+      padding: 42px 32px;
+      text-align: center;
+      background: linear-gradient(180deg, #1c1500 0%, #2a2000 100%);
+      border: 1px solid #c8950a;
+      box-shadow: 0 0 50px rgba(255, 215, 0, 0.12);
+    }
+
+    .thanks-card h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: 38px;
+      color: #fff7a1;
+      margin-bottom: 18px;
+    }
+
+    .thanks-card p {
+      color: #f5e6a3;
+      font-size: 17px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .gold-name { font-size: 22px; }
+      .apk-btn { font-size: 13px; padding: 10px 16px; }
+      .digit-cell { font-size: 10px; border-radius: 5px; }
+      .digits-grid { gap: 4px; }
+      .safe-bar { flex-wrap: wrap; gap: 12px; padding: 16px 20px; }
+      .safe-text { font-size: 12px; letter-spacing: 2px; }
+      .thanks-card { padding: 28px 20px; }
+      .thanks-card h1 { font-size: 28px; }
+      .thanks-card p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="gold-name">GOLD</div>
+    <a class="apk-btn" id="downloadBtn" href="https://matkagold.vercel.app/apk/matkagold.apk">
+      <i class="ti ti-download"></i>
+      Download APK
+    </a>
+  </header>
+
+  <!-- DIGIT BANNER -->
+  <section class="banner-section">
+    <p class="banner-label">—PREMIUM EXPERIENCE —</p>
+    <div class="digits-grid" id="digitsGrid"></div>
+  </section>
+
+  <!-- THANKS VIEW -->
+  <section class="thanks-page hidden" id="thanksPage" aria-hidden="true">
+    <div class="thanks-card">
+      <h1>Thank You!</h1>
+      <p>Your download is on the way. The APK will start shortly.</p>
+      <a class="apk-btn" id="thanksDownloadBtn" href="https://matkagold.vercel.app/apk/matkagold.apk">
+        <i class="ti ti-download"></i>
+        Download Now
+      </a>
+    </div>
+  </section>
+
+  <!-- SAFE & SECURE -->
+  <div class="safe-bar">
+    <i class="ti ti-shield-check"></i>
+    <span class="safe-text">Safe &amp; Secure</span>
+    <span class="dot"></span>
+    <span class="safe-text">100% Trusted</span>
+    <i class="ti ti-lock"></i>
+  </div>
+
+  <script>
+    const grid = document.getElementById('digitsGrid');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const thanksPage = document.getElementById('thanksPage');
+    const pageSections = [
+      document.querySelector('.header'),
+      document.querySelector('.banner-section'),
+      document.querySelector('.safe-bar')
+    ];
+    const styles = ['d-gold', 'd-bright', 'd-dark', 'd-shine'];
+
+    downloadBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      pageSections.forEach((section) => section.classList.add('hidden'));
+      thanksPage.classList.remove('hidden');
+      thanksPage.setAttribute('aria-hidden', 'false');
+      setTimeout(() => {
+        window.location.href = downloadBtn.href;
+      }, 1200);
+    });
+
+    for (let i = 0; i <= 99; i++) {
+      const cell = document.createElement('div');
+      const styleClass = styles[Math.floor(Math.random() * styles.length)];
+      cell.className = 'digit-cell ' + styleClass;
+      cell.textContent = String(i).padStart(2, '0');
+
+      cell.addEventListener('click', () => {
+        cell.classList.add('clicked');
+        setTimeout(() => cell.classList.remove('clicked'), 400);
+      });
+
+      grid.appendChild(cell);
+    }
+  </script>
+
+</body>
+</html>
